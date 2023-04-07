@@ -12,11 +12,11 @@ P = 5
 X = pd.DataFrame(np.random.randn(N, P))
 y = pd.Series(np.random.randn(N))
 
-
 for fit_intercept in [True, False]:
     LR = LinearRegression(fit_intercept=fit_intercept)
-    LR.fit_vectorised(X, y) # here you can use fit_non_vectorised / fit_autograd methods
+    LR.fit_autograd(X, y,15, lr_type = 'constant') # here you can use fit_non_vectorised / fit_autograd methods
+    X = pd.DataFrame(np.random.randn(N, P))
     y_hat = LR.predict(X)
-
+    print(y_hat)
     print('RMSE: ', rmse(y_hat, y))
     print('MAE: ', mae(y_hat, y))

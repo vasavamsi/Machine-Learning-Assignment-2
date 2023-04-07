@@ -13,7 +13,7 @@ class PolynomialFeatures():
         param degree : (int) max degree of polynomial features
         param include_bias : (boolean) specifies wheter to include bias term in returned feature array.
         """
-        
+        self.degree = degree 
         
         pass
 
@@ -30,8 +30,15 @@ class PolynomialFeatures():
         Outputs:
         returns (np.array) Tranformed dataset.
         """
+        fin_out = []
         
-        pass
+        for num in range(X.shape[0]):
+            out = [1]
+            for deg in range(1,self.degree+1):
+                out.append(X[num]**deg)
+            fin_out.append(out)
+        return np.array(fin_out)
+        #pass
     
         
         
